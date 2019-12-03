@@ -1,0 +1,29 @@
+{
+  "name": "loggy",
+  "version": "1.0.0",
+  "description": "A Node.js-based microservice for log aggregation on Kubernetes.",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "start:dev": "nodemon --legacy-watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashleydavis/kubernetes-log-aggregation-example.git"
+  },
+  "author": "ashley@codecapers.com.au",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashleydavis/kubernetes-log-aggregation-example/issues"
+  },
+  "homepage": "https://github.com/ashleydavis/kubernetes-log-aggregation-example#readme",
+  "dependencies": {
+    "chokidar": "^3.3.0",
+    "globby": "^10.0.1",
+    "tail": "^2.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7"
+  }
+}

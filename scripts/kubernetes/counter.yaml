@@ -1,0 +1,24 @@
+#
+# Used to deploy a pod on Kubernetes that prints an periodic counter.
+# This is good for testing that your Kubernetes log aggregation is working.
+#
+# Source: https://kubernetes.io/docs/concepts/cluster-administration/logging/
+#
+# To deploy this pod invoke the command:
+#
+#   kubectl apply -f ./scripts/kubernetes/counter.yaml
+#
+# Inspect the individual logs from the new pod with this command:
+#
+#   kubectl logs counter
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter
+spec:
+  containers:
+  - name: count
+    image: busybox
+    args: [/bin/sh, -c,
+            'i=0; while true; do echo "$i: $(date)"; i=$((i+1)); sleep 1; done']

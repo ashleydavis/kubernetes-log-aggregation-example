@@ -1,0 +1,58 @@
+#
+# This file is a test run Daemonset for exploring log files on a Kubernetes nodes.
+# Deploy this to your Kubernetes cluster like this:
+#   
+#   kubectl apply -f ./scripts/kubernetes/test-run.yaml
+#
+# Now see what pods it has created:
+#   
+#   kubectl --namespace kube-system get pods
+#
+# You should have a "test" pod created for each nod in your Kubernetes cluster.
+# Pick out the name of one of the "test" pods, the name will be unique for you, for example it could be "test-4hft2".
+# Now shell into the pod like this:
+#
+#   kubectl --namespace=kube-system exec -it test-4hft2 -- /bin/bash
+#
+# Just be sure to insert the name of the pod you want to look it, here's the generic template:
+#
+#   kubectl --namespace=kube-system exec -it <your-pod-name> -- /bin/bash
+#
+# Now you should be in the command line shell for your test run pod on the 
+# Change directory to /logs and run ls see the log files that have been collected for the pods/containers running on this node.
+#
+# When finished with this test run delete it from your Kubernetes cluster:
+#
+#   kubectl delete -f ./scripts/kubernetes/test-run.yaml
+#
+
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: test
+  namespace: kube-system
+  labels:
+    test: test
+spec:
+  template:
+    metadata:
+      labels:
+        test: test
+    spec:
+      serviceAccountName: test
+      containers:
+      - name: test
+        image: ubuntu:18.04
+        args: [/bin/sh, -c, 'sleep infinity']
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers
