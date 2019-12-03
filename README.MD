@@ -9,10 +9,10 @@ This example demonstrates the simplest possible log aggregation for Kubernetes u
 
 ## Directory structure
 
-<a target="_blank" href="http://bit.ly/2t2cJu2"><img align="right" src="images/support2.png"></a>
 
 Vagrantfile         ->  Boot a Vagrant virtual machine for development with Docker preinstalled, this 
                         makes it easier to build and push Loggy's image to your container registry.
+<a target="_blank" href="http://bit.ly/2t2cJu2"><img align="right" src="images/support2.png"></a>
 loggy/              ->  Code and Dockerfile for the Loggy microservice.
 scripts/
     dev/            ->  Scripts for installing the dev VM.
