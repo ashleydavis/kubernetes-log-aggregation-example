@@ -2,7 +2,7 @@
 
 <a target="_blank" href="http://bit.ly/2o0aDsP"><img align="right" src="images/support.png"></a>
 
-This repo contains example code for [the related blog post](http://the-data-wrangler/kubernetes-log-aggregation/). For future updates [follow the developer on Twitter for updates](https://twitter.com/ashleydavis75).
+This repo contains example code for [the related blog post](http://the-data-wrangler/kubernetes-log-aggregation/). For future updates [follow the developer on Twitter](https://twitter.com/ashleydavis75).
 
 
 This example demonstrates the simplest possible log aggregation for Kubernetes using a microservice (Loggy) and a DaemonSet so that the microservice is deployed to every node on the cluster.
